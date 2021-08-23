@@ -1,0 +1,84 @@
+{
+    "tag": {
+        "name": "User",
+        "description": ""
+    },
+    "path": {
+        "/add-user/": {
+            "post": {
+                "summary": "Add user entry to database",
+                "tags": [
+                    "User"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "schemas": {
+        "User": {
+            "title": "User",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "Id",
+                    "type": "integer"
+                },
+                "signup_ts": {
+                    "title": "Signup Ts",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "friends": {
+                    "title": "Friends",
+                    "default": [],
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "name": {
+                    "title": "Name",
+                    "default": "John Doe",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ]
+        },
+        "UserResponse": {
+            "title": "UserResponse",
+            "type": "object",
+            "properties": {
+                "status": {
+                    "title": "Status",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status"
+            ]
+        }
+    }
+}

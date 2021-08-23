@@ -1,0 +1,232 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Swagger example",
+        "version": "0.1.0"
+    },
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "tags": [
+        {
+            "name": "User",
+            "description": ""
+        },
+        {
+            "name": "Spam",
+            "description": ""
+        }
+    ],
+    "paths": {
+        "/add-user/": {
+            "post": {
+                "summary": "Add user entry to database",
+                "tags": [
+                    "User"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/detect-spam/": {
+            "post": {
+                "summary": "Detect spam",
+                "tags": [
+                    "Spam"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Spam"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SpamResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "title": "User",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "integer"
+                    },
+                    "signup_ts": {
+                        "title": "Signup Ts",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "friends": {
+                        "title": "Friends",
+                        "default": [],
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "name": {
+                        "title": "Name",
+                        "default": "John Doe",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            },
+            "UserResponse": {
+                "title": "UserResponse",
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "title": "Status",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "status"
+                ]
+            },
+            "Spam": {
+                "title": "Spam",
+                "type": "object",
+                "properties": {
+                    "foo": {
+                        "$ref": "#/components/schemas/Foo"
+                    },
+                    "bars": {
+                        "title": "Bars",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Bar"
+                        }
+                    }
+                },
+                "required": [
+                    "foo",
+                    "bars"
+                ],
+                "definitions": {
+                    "Foo": {
+                        "title": "Foo",
+                        "type": "object",
+                        "properties": {
+                            "count": {
+                                "title": "Count",
+                                "type": "integer"
+                            },
+                            "size": {
+                                "title": "Size",
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "count"
+                        ]
+                    },
+                    "Bar": {
+                        "title": "Bar",
+                        "type": "object",
+                        "properties": {
+                            "apple": {
+                                "title": "Apple",
+                                "default": "x",
+                                "type": "string"
+                            },
+                            "banana": {
+                                "title": "Banana",
+                                "default": "y",
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "SpamResponse": {
+                "title": "SpamResponse",
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "title": "Status",
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "status"
+                ]
+            },
+            "Foo": {
+                "title": "Foo",
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "title": "Count",
+                        "type": "integer"
+                    },
+                    "size": {
+                        "title": "Size",
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "count"
+                ]
+            },
+            "Bar": {
+                "title": "Bar",
+                "type": "object",
+                "properties": {
+                    "apple": {
+                        "title": "Apple",
+                        "default": "x",
+                        "type": "string"
+                    },
+                    "banana": {
+                        "title": "Banana",
+                        "default": "y",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

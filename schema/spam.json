@@ -1,0 +1,141 @@
+{
+    "tag": {
+        "name": "Spam",
+        "description": ""
+    },
+    "path": {
+        "/detect-spam/": {
+            "post": {
+                "summary": "Detect spam",
+                "tags": [
+                    "Spam"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Spam"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SpamResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "schemas": {
+        "Spam": {
+            "title": "Spam",
+            "type": "object",
+            "properties": {
+                "foo": {
+                    "$ref": "#/definitions/Foo"
+                },
+                "bars": {
+                    "title": "Bars",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Bar"
+                    }
+                }
+            },
+            "required": [
+                "foo",
+                "bars"
+            ],
+            "definitions": {
+                "Foo": {
+                    "title": "Foo",
+                    "type": "object",
+                    "properties": {
+                        "count": {
+                            "title": "Count",
+                            "type": "integer"
+                        },
+                        "size": {
+                            "title": "Size",
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "count"
+                    ]
+                },
+                "Bar": {
+                    "title": "Bar",
+                    "type": "object",
+                    "properties": {
+                        "apple": {
+                            "title": "Apple",
+                            "default": "x",
+                            "type": "string"
+                        },
+                        "banana": {
+                            "title": "Banana",
+                            "default": "y",
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "SpamResponse": {
+            "title": "SpamResponse",
+            "type": "object",
+            "properties": {
+                "status": {
+                    "title": "Status",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "status"
+            ]
+        },
+        "Foo": {
+            "title": "Foo",
+            "type": "object",
+            "properties": {
+                "count": {
+                    "title": "Count",
+                    "type": "integer"
+                },
+                "size": {
+                    "title": "Size",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "count"
+            ]
+        },
+        "Bar": {
+            "title": "Bar",
+            "type": "object",
+            "properties": {
+                "apple": {
+                    "title": "Apple",
+                    "default": "x",
+                    "type": "string"
+                },
+                "banana": {
+                    "title": "Banana",
+                    "default": "y",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
